@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Étudiants</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Liste des Étudiants</h1>
+        <div id="content">
+            <div class="loading">Chargement des étudiants...</div>
+        </div>
+    </div>
+
+    <script>
+        fetch('/api/etudiants')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur réseau');
+                }
+                return response.json();
+            })
+            .then(etudiants => {
+                const content = document.getElementById('content');
+                
+                if (etudiants.length === 0) {
+                    content.innerHTML = '<div class="loading">Aucun étudiant trouvé</div>';
+                    return;
+                }
+                
+                let html = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>CIN</th>
+                                <th>Nom</th>
+                                <th>Date de naissance</th>
+                                <th>Âge</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                etudiants.forEach(etudiant => {
+                    html += `
+                        <tr>
+                            <td>${etudiant.id}</td>
+                            <td>${etudiant.cin}</td>
+                            <td>${etudiant.nom}</td>
+                            <td>${etudiant.dateNaissance}</td>
+                            <td>${etudiant.age || 'N/A'}</td>
+                        </tr>
+                    `;
+                });
+                
+                html += `
+                        </tbody>
+                    </table>
+                `;
+                
+                content.innerHTML = html;
+            })
+            .catch(error => {
+                const content = document.getElementById('content');
+                content.innerHTML = `<div class="error">❌ Erreur: ${error.message}</div>`;
+                console.error('Erreur:', error);
+            });
+    </script>
+</body>
+</html>
