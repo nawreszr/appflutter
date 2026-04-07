@@ -37,3 +37,30 @@ L’application mobile consomme l’API et affiche :
 CIN
 Nom
 Date de naissance
+
+Commandes clés du projet Partie 2
+Git
+bash
+git checkout -b version-2                    # Créer et basculer sur la branche
+git add . && git commit -m "PROJ-XX: message" # Commiter les changements
+git push -u origin version-2                 # Pusher sur GitHub
+Docker
+bash
+docker build -t nawreszr/etudiant-service:1.0 .  # Construire l'image
+docker push nawreszr/etudiant-service:1.0        # Publier sur Docker Hub
+docker compose up --build                         # Lancer l'application
+Kubernetes (K3S)
+bash
+kubectl apply -f k8s/postgres-deployment.yaml     # Déployer PostgreSQL
+kubectl apply -f k8s/etudiant-deployment.yaml    # Déployer l'API
+kubectl port-forward service/etudiant-service 8080:8080  # Accéder au service
+Tests
+bash
+./mvnw test                                       # Exécuter les tests
+./mvnw test -Dtest=CucumberRunnerTest            # Tester BDD Cucumber
+Accès aux interfaces
+bash
+http://localhost:8080/api/etudiants              # API REST
+http://localhost:8080/swagger-ui.html            # Documentation Swagger
+http://localhost:8080/index.html                 # Interface web
+
