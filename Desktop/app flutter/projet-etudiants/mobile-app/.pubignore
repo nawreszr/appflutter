@@ -1,0 +1,20 @@
+# Pubspec Ignore
+.DS_Store
+.git/
+.gitignore
+.packages
+pubspec.lock
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

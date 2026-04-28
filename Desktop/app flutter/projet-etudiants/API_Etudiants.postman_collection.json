@@ -1,0 +1,141 @@
+{
+  "info": {
+    "_postman_id": "etudiants-api-postman",
+    "name": "API Étudiants",
+    "description": "Collection pour tester l'API REST des Étudiants",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Étudiants",
+      "item": [
+        {
+          "name": "Get All Étudiants",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/etudiants",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "etudiants"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Étudiant By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/etudiants/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "etudiants",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Étudiant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cin\": \"99999999\",\n  \"nom\": \"John Doe\",\n  \"dateNaissance\": \"2000-01-15\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/etudiants",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "etudiants"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Étudiant",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cin\": \"99999999\",\n  \"nom\": \"John Updated\",\n  \"dateNaissance\": \"2000-01-15\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/etudiants/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "etudiants",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Étudiant",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/etudiants/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "etudiants",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
