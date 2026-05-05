@@ -63,6 +63,10 @@ services:
       - "8082:8082"
     environment:
       SPRING_APPLICATION_NAME: grading-service
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/etudiants_db
+      SPRING_DATASOURCE_USERNAME: etudiants_user
+      SPRING_DATASOURCE_PASSWORD: etudiants_password
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
     depends_on:
       - db
